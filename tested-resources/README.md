@@ -47,31 +47,32 @@ This master framework is composed of pre-tested, hardened Azure modules located 
 
 The framework enforces a strict separation between reusable modules and environment-specific instantiations (templates).
 
-text
-ADO_MASTER/                   # Root repository[cite: 1]
-├── module/                   # Reusable, version-controlled Terraform modules[cite: 1]
-│   ├── appget/              [cite: 1]
-│   ├── bastion/             [cite: 1]
-│   ├── FW/                  [cite: 1]
-│   ├── KeyV/                [cite: 1]
-│   ├── nsg/                 [cite: 1]
-│   ├── peering/             [cite: 1]
-│   ├── rg/                  [cite: 1]
-│   ├── rt/                  [cite: 1]
-│   ├── subnet/              [cite: 1]
-│   ├── vm/                  [cite: 1]
-│   └── vnet/                [cite: 1]
+```text
+ADO_MASTER/                   # Root repository
+├── module/                   # Reusable, version-controlled Terraform modules
+│   ├── appget/              
+│   ├── bastion/             
+│   ├── FW/                  
+│   ├── KeyV/                
+│   ├── nsg/                 
+│   ├── peering/             
+│   ├── rg/                  
+│   ├── rt/                  
+│   ├── subnet/              
+│   ├── vm/                  
+│   └── vnet/                
 │
-├── tested-resources/         # Environment templates that call the modules[cite: 1]
-│   ├── dev/                  # Development environment deployment[cite: 1]
-│   │   ├── main.tf           # Module calls and local configurations[cite: 1]
-│   │   ├── providers.tf      # Azure provider and backend block[cite: 1]
-│   │   ├── variables.tf      # Environment-specific variable definitions[cite: 1]
-│   │   └── terraform.tfvars  # Variable values for Dev[cite: 1]
+├── tested-resources/         # Environment templates that call the modules
+│   ├── dev/                  # Development environment deployment
+│   │   ├── main.tf           # Module calls and local configurations
+│   │   ├── providers.tf      # Azure provider and backend block
+│   │   ├── variables.tf      # Environment-specific variable definitions
+│   │   └── terraform.tfvars  # Variable values for Dev
 │   ├── qa/                   # QA environment deployment template (Coming Soon)
 │   └── prod/                 # Production environment deployment template (Coming Soon)
 │
-└── README.md                 # Project documentation[cite: 1]
+└── README.md                 # Project documentation
+```
 
 
 
