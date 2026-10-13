@@ -1,0 +1,49 @@
+resource "azurerm_network_security_group" "nsg" {
+  for_each            = var.nsg
+  name                = each.value.nsg_name
+  location            = each.value.location
+  resource_group_name = each.value.resource_group_name
+
+  security_rule {
+    name                       = "AllowSSH"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "AllowHTTP"
+    priority                   = 200
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "AllowHTTPS"
+    priority                   = 300
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+resource "azurerm_subnet_network_security_group_association" "nsga" {
+  for_each                  = var.nsga
+  subnet_id                 = each.value.subnet_id
+  network_security_group_id = azurerm_network_security_group.nsg[each.key].id
+
+}
